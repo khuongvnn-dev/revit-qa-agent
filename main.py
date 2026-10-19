@@ -1,7 +1,13 @@
 import argparse
 import sys
 from pathlib import Path
-from core.runner import TestRunner
+
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 
 def list_test_cases(catalog_dir: Path):
@@ -35,6 +41,7 @@ def main():
         list_test_cases(catalog_dir)
         sys.exit(0)
 
+    from core.runner import TestRunner
     runner = TestRunner(config_path=Path(args.config) if args.config else None)
 
     if args.test:
