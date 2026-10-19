@@ -1,0 +1,39 @@
+metadata:
+  id: "TC-42554"
+  name: "Xác minh Bug 42554 - Tạo Scopebox tự động cho phòng"
+  author: "QA Automation Team"
+  ticket_id: "Redmine #42554"
+  module: "mep_tools"
+  version: "1.0.0"
+
+preconditions:
+  fixture_model: "D:/RevitTest/runs/42554-scopebox/Project1.rvt"
+  launch_revit: true
+  sandbox_copy: true
+
+steps:
+  - name: "Kết nối cửa sổ Autodesk Revit 2024"
+    action: "find_window"
+    timeout: 60
+    capture_screenshot: true
+    label: "revit_connected"
+
+  - name: "Chọn Tab Ribbon Hawee Tools"
+    action: "click_ribbon_tab"
+    tab: "Hawee Tools"
+    timeout: 10
+    capture_screenshot: true
+    label: "tab_selected"
+
+  - name: "Nhấn nút lệnh Scope Box"
+    action: "click_ribbon_button"
+    button: "Scope Box"
+    timeout: 15
+    capture_screenshot: true
+    label: "button_clicked"
+
+  - name: "Đợi tiến trình hoàn thành và ổn định"
+    action: "sleep"
+    seconds: 3
+    capture_screenshot: true
+    label: "result_canvas"

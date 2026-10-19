@@ -1,0 +1,49 @@
+# ==============================================================================
+# BẢN MẪU CẤU HÌNH DỰ ÁN REVIT-QA-AGENT (CONFIG TEMPLATE)
+# Hướng dẫn: Sao chép tệp này thành 'config.yaml' và cập nhật thông số theo máy của bạn.
+# LƯU Ý: Tệp 'config.yaml' đã được thêm vào .gitignore và KHÔNG BAO GIỜ bị push lên Git!
+# ==============================================================================
+
+# 1. Cấu hình môi trường Autodesk Revit
+revit:
+  # Phiên bản Revit mặc định sử dụng để test (2022, 2024, ...)
+  version: "2024"
+  # Đường dẫn đến file thực thi Revit.exe trên máy của bạn
+  executable_path: "C:\\Program Files\\Autodesk\\Revit 2024\\Revit.exe"
+  # Thời gian chờ tối đa khi khởi động Revit hoặc load model nặng (giây)
+  startup_timeout_seconds: 90
+  # Thời gian chờ phản hồi tối đa cho mỗi thao tác UI (giây)
+  action_timeout_seconds: 30
+
+# 2. Cấu hình Vận hành & Lưu trữ Bằng chứng
+runtime:
+  # Thư mục lưu trữ kết quả chạy test, ảnh chụp màn hình và báo cáo Markdown
+  output_dir: "D:/RevitTest/runs"
+  # Tệp theo dõi tiến độ thời gian thực (được cập nhật sau mỗi bước)
+  progress_file: "./PROGRESS.yaml"
+  # Số lần thử lại tối đa cho mỗi bước trước khi kích hoạt bộ ngắt mạch (Circuit Breaker)
+  max_retries: 3
+  # Thời gian nghỉ giữa các lần thử lại (giây)
+  retry_backoff_seconds: 2
+  # Tự động ngăn Windows tắt màn hình (Display Sleep) khi chạy qua đêm
+  prevent_display_sleep: true
+
+# 3. Cấu hình Thông báo Telegram (Tùy chọn)
+telegram:
+  enabled: false
+  # Bot Token lấy từ @BotFather trên Telegram
+  bot_token: "YOUR_TELEGRAM_BOT_TOKEN_HERE"
+  # ID người nhận hoặc Chat ID của nhóm nhận thông báo
+  chat_id: "YOUR_CHAT_ID_HERE"
+  # Bắn thông báo khi hoàn tất toàn bộ test suite
+  notify_on_complete: true
+  # Bắn thông báo cảnh báo khẩn cấp khi gặp lỗi sau 3 lần retry
+  notify_on_error: true
+  # Bắn câu hỏi khi gặp tình huống mơ hồ cần con người quyết định
+  notify_on_human_input: true
+
+# 4. Cấu hình Tích hợp Redmine (Tùy chọn)
+redmine:
+  enabled: false
+  url: "http://redmine.internal"
+  api_key: "YOUR_REDMINE_API_KEY_HERE"

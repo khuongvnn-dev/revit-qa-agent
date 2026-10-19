@@ -1,0 +1,11 @@
+# Thư viện điều khiển giao diện Windows UIAutomation & Computer Use
+uiautomation>=2.0.18
+
+# Xử lý chụp ảnh màn hình và xử lý ảnh bằng chứng
+pillow>=10.0.0
+
+# Xử lý định dạng YAML kịch bản test và file theo dõi tiến độ
+pyyaml>=6.0.1
+
+# Giao tiếp HTTP với Telegram Bot API và Redmine REST API
+requests>=2.31.0

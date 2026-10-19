@@ -1,0 +1,35 @@
+# Cấu hình cá nhân và thông tin nhạy cảm (KHÔNG BAO GIỜ COMMIT)
+config.yaml
+*.local.yaml
+.env
+.env.*
+
+# Trạng thái thực thi thời gian thực & Bằng chứng máy
+PROGRESS.yaml
+PROGRESS.md
+runs/
+evidence/
+logs/
+*.log
+
+# File mô hình Revit nặng (tránh làm phình dung lượng git)
+*.rvt
+*.rfa
+*.rte
+*.tmp
+
+# Môi trường ảo Python & Bộ nhớ đệm
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+
+# IDE & Editor
+.vscode/
+.idea/
+*.suo
+*.user
